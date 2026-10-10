@@ -111,6 +111,26 @@ const split = (v: string, sep: string) =>
     .map((s) => s.trim())
     .filter(Boolean);
 
+const INFO_DEFAULTS: Info = {
+  alamat: '[ALAMAT LENGKAP]',
+  whatsapp: '[NOMOR WHATSAPP]',
+  jam_operasional: '[JAM OPERASIONAL]',
+  instagram: '[LINK INSTAGRAM]',
+  tahun_berdiri: '[TAHUN BERDIRI]',
+};
+
+/** Merapikan isi tab info supaya tahan salah isi: sel kosong, link tanpa https://, atau kode <iframe> utuh untuk peta. */
+function normalizeInfo(info: Info) {
+  for (const [k, def] of Object.entries(INFO_DEFAULTS)) if (!info[k]?.trim()) info[k] = def;
+  for (const k of ['instagram']) {
+    const v = info[k].trim();
+    if (!v.startsWith('[') && !/^https?:\/\//i.test(v)) info[k] = 'https://' + v.replace(/^\/+/, '');
+  }
+  const peta = (info.peta ?? '').trim();
+  const src = peta.match(/src\s*=\s*["']([^"']+)["']/i);
+  info.peta = (src ? src[1] : peta).replace(/&amp;/g, '&');
+}
+
 export function buildContent(raw: RawTabs): Content {
   const items: MenuItem[] = csvToRecords(raw.menu)
     .filter((r) => r.nama && !isHidden(r.tampil))
@@ -186,6 +206,7 @@ export function buildContent(raw: RawTabs): Content {
 
   const info: Info = {};
   for (const r of csvToRecords(raw.info)) if (r.kunci) info[r.kunci.toLowerCase()] = r.nilai;
+  normalizeInfo(info);
 
   return { groups, promo, perjalanan, info };
 }

@@ -1,17 +1,16 @@
 import React from 'react';
-import { Clock, Mail, MapPin, Phone } from 'lucide-react';
+import { Clock, MapPin, Phone } from 'lucide-react';
 import { useLang } from '../lib/lang';
 import { useNav } from '../lib/nav';
 import { useContent, isPlaceholder, type Info } from '../lib/content';
 import { waLink } from '../lib/format';
-import { InstagramIcon, RoundCta, TikTokIcon, WhatsAppIcon } from './ui';
+import { InstagramIcon, RoundCta, WhatsAppIcon } from './ui';
 
 export function socialLinks(info: Info) {
   const link = (v?: string) => (v && /^https?:\/\//i.test(v) ? v : '#');
   return [
     { name: 'Instagram', href: link(info.instagram) },
     { name: 'WhatsApp', href: waLink(info.whatsapp) ?? '#' },
-    { name: 'TikTok', href: link(info.tiktok) },
   ];
 }
 
@@ -105,7 +104,6 @@ export const Footer: React.FC = () => {
               <ul className="space-y-4 text-sm leading-relaxed">
                 {row(<MapPin className="h-4 w-4" />, info.alamat)}
                 {row(<Phone className="h-4 w-4" />, info.whatsapp, wa)}
-                {row(<Mail className="h-4 w-4" />, info.email, info.email?.includes('@') ? `mailto:${info.email}` : null)}
                 {row(<Clock className="h-4 w-4" />, info.jam_operasional)}
               </ul>
               <div className="mt-6 flex gap-2">
@@ -118,7 +116,7 @@ export const Footer: React.FC = () => {
                     aria-label={s.name}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 transition hover:bg-white hover:text-crimson"
                   >
-                    {s.name === 'Instagram' ? <InstagramIcon /> : s.name === 'TikTok' ? <TikTokIcon /> : <WhatsAppIcon />}
+                    {s.name === 'Instagram' ? <InstagramIcon /> : <WhatsAppIcon />}
                   </a>
                 ))}
               </div>

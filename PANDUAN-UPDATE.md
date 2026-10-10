@@ -54,7 +54,7 @@ Urutan baris di tab ini = urutan tampil di website.
 `tahun`, `judul`, `deskripsi`, `foto`, `tampil`. **Isi awal hanyalah contoh `[TAHUN 1]` dst., ganti dengan data asli.**
 
 ### Tab `info` (kontak)
-Baris `alamat`, `whatsapp` (format `08xx...` atau `628xx...`), `email`, `jam_operasional`, `instagram`, `tiktok`
+Baris `alamat`, `whatsapp` (format `08xx...` atau `628xx...`), `jam_operasional`, `instagram`
 (link lengkap `https://...`), `tahun_berdiri`, `peta` (link **embed** Google Maps: Google Maps > Share > Embed a map > salin isi `src="..."`).
 Tombol WhatsApp dan formulir reservasi baru aktif setelah `whatsapp` diisi.
 

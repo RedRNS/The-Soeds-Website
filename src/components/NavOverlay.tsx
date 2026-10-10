@@ -3,7 +3,7 @@ import { X } from 'lucide-react';
 import { useLang } from '../lib/lang';
 import { useNav } from '../lib/nav';
 import { useContent } from '../lib/content';
-import { InstagramIcon, TikTokIcon, WhatsAppIcon } from './ui';
+import { InstagramIcon, WhatsAppIcon } from './ui';
 import { socialLinks } from './Footer';
 
 export const NavOverlay: React.FC = () => {
@@ -78,7 +78,7 @@ export const NavOverlay: React.FC = () => {
                 aria-label={s.name}
                 className="flex h-11 w-11 items-center justify-center rounded-full border border-white/40 transition hover:bg-white hover:text-crimson"
               >
-                {s.name === 'Instagram' ? <InstagramIcon /> : s.name === 'TikTok' ? <TikTokIcon /> : <WhatsAppIcon />}
+                {s.name === 'Instagram' ? <InstagramIcon /> : <WhatsAppIcon />}
               </a>
             ))}
           </div>

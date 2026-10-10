@@ -137,9 +137,3 @@ export const WhatsAppIcon = () => (
     <path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.5-2-1-1 .8c-.9-.4-1.8-1.3-2.2-2.2l.8-1-1-2z" />
   </svg>
 );
-export const TikTokIcon = () => (
-  <svg viewBox="0 0 24 24" className="h-5 w-5" {...stroke} aria-hidden>
-    <path d="M14 4v10.5a3.5 3.5 0 1 1-3.5-3.5" />
-    <path d="M14 4c.3 2.2 1.8 3.8 4 4" />
-  </svg>
-);
